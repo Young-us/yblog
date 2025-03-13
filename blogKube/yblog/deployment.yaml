@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yblog-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: yblog
+  template:
+    metadata:
+      labels:
+        app: yblog
+    spec:
+      initContainers:
+      - name: wait-for-mysql
+        image: busybox:1.28
+        command: ['sh', '-c', 'until nc -z mysql-service 3306; do echo "Waiting for MySQL"; sleep 2; done']
+      containers:
+      - name: yblog
+        image: youngus/yblog:1.0.0
+        ports:
+        - containerPort: 8000
+        volumeMounts:
+        - name: config-volume
+          mountPath: /app/.env
+          subPath: .env
+      volumes:
+      - name: config-volume
+        configMap:
+          name: yblog-config
