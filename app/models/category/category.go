@@ -8,7 +8,7 @@ import (
 type Category struct {
 	models.BaseModel
 
-	Name string `gorm:"type:varchar(255);not null;" valid:"name"`
+	Name string `gorm:"type:text;not null;" valid:"name"`
 }
 
 // Link 方法用来生成文章链接
