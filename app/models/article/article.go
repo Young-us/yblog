@@ -10,7 +10,7 @@ import (
 
 type Article struct {
 	models.BaseModel
-	Title      string `gorm:"type:varchar(255);not null" valid:"title"`
+	Title      string `gorm:"type:text;not null" valid:"title"`
 	Body       string `gorm:"type:text;not null" valid:"body"`
 	UserID     uint64
 	User       user.User         `gorm:"foreignKey:UserID"`
