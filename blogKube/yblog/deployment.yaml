@@ -18,7 +18,7 @@ spec:
         command: ['sh', '-c', 'until nc -z mysql-service 3306; do echo "Waiting for MySQL"; sleep 2; done']
       containers:
       - name: yblog
-        image: youngus/yblog:1.0.1
+        image: youngus/yblog:1.0.2
         ports:
         - containerPort: 8000
         volumeMounts:

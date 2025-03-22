@@ -31,6 +31,7 @@ func (ac *ArticlesController) Show(w http.ResponseWriter, r *http.Request) {
 		ac.ResponseForSQLError(w, err)
 	} else {
 		// ---  4. 读取成功，显示文章 ---
+		//article.Body = strings.ReplaceAll(article.Body, "\n", "<br>")
 		view.RenderSimple(w, view.D{
 			"Article":          article,
 			"CanModifyArticle": policies.CanModifyArticle(article),
