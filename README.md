@@ -40,3 +40,4 @@ blogKube：kubernetes服务部署
 2.docker push your-iamge-name
 3.cd blogKube
 4.Run.bat
+.
